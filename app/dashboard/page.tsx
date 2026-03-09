@@ -1,18 +1,33 @@
-'use client'
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
+interface Users {
+  id: number;
+  username: string;
+  email: string;
+}
 
+const Users = () => {
+  const [users, setUsers] = useState<Users[]>([]);
 
-const users = [
-  { id: 1, name: "John Doe", email: "john@example.com" },
-  { id: 2, name: "Jane Smith", email: "jane@example.com" },
-  { id: 3, name: "Bob Johnson", email: "bob@example.com" },
-  { id: 4, name: "Alice Brown", email: "alice@example.com" },
-  { id: 5, name: "Charlie Wilson", email: "charlie@example.com" },
-];
+  const fetchUsers = async () => {
+    try {
+      const res = await fetch("/api/users");
+      const data = await res.json();
+      setUsers(data);
+    } catch (error) {
+      console.error("Error ", error);
+    }
+  };
 
-const page = () => {
+  useEffect(() => {
+    const load = () => {
+      fetchUsers();
+    };
+    load();
+  }, []);
+
   return (
     <div>
       <Navbar />
@@ -30,7 +45,7 @@ const page = () => {
               key={user.id}
               className="grid grid-cols-2 px-6 py-4 border-t border-slate-200 hover:bg-slate-50 transition-colors"
             >
-              <span className="text-slate-800">{user.name}</span>
+              <span className="text-slate-800">{user.username}</span>
               <span className="text-slate-500">{user.email}</span>
             </div>
           ))}
@@ -40,4 +55,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Users;
