@@ -28,7 +28,7 @@ const SignUp = () => {
       if (!res.ok) {
         setError(data.error);
       } else{
-        router.push('/')
+        router.push('/login')
       }
     } catch (error) {
       console.error("Error ", error);

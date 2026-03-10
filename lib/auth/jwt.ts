@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 const SECRET = process.env.JWT_SECRET!
 
 // generate a token, take id and email as input
-export function signToken(payload: {id: number; email: string}) {
+export function signToken(payload: {id: number; email: string; username: string}) {
 
     // jwt.sign() take 3 things:
     // payload -> the data u want to store in token
