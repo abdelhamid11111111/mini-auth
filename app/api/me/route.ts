@@ -3,11 +3,12 @@ import { cookies } from "next/headers";
 import { verifyToken } from "@/lib/auth/jwt";
 
 export async function GET() {
-  // get cookie
+  // // get cookie
   const cookieStore = await cookies();
   // get token from cookie
   const token = cookieStore.get("token")?.value;
 
+  // check token is valid
   if (!token) return NextResponse.json({ user: null });
 
   // verify token

@@ -10,7 +10,7 @@ export default function Home() {
     const fetchUsr = async () => {
       const res = await fetch("/api/me");
       const data = await res.json();
-      setUsername(data.user.username);
+      setUsername(data.user?.username);
     };
     fetchUsr();
   }, []);
