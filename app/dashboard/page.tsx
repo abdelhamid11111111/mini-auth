@@ -31,7 +31,7 @@ const Users = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="max-w-3xl mx-auto mt-10 p-6 bg-white rounded-xl shadow">
         <h1 className="text-2xl font-bold text-slate-900 mb-6">All Users</h1>
         <div className="overflow-hidden rounded-lg border border-slate-200">

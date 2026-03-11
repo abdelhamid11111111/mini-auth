@@ -30,7 +30,7 @@ export default function SignInPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
-      <Navbar />
+      {/* <Navbar /> */}
 
       <main className="flex items-center justify-center px-4 py-20">
         <div className="w-full max-w-sm bg-white rounded-2xl border border-slate-200 shadow-sm p-8">

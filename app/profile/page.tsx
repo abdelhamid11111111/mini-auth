@@ -12,7 +12,7 @@ const Profile = () => {
 
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex items-center justify-center h-100">
         <div className="bg-white rounded-xl shadow p-8 w-80">
           <h1 className="text-2xl font-bold text-slate-900 mb-6">My Profile</h1>

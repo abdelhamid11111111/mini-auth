@@ -1,21 +1,16 @@
-"use client";
-import { useRouter } from "next/navigation";
-import Navbar from "./components/Navbar";
-import { useSession } from "@/lib/auth-client";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-export default function Home() {
+export default async function Home() {
 
-  const {data: session, isPending} = useSession()
+  const session = await auth.api.getSession({ headers: await headers() });
 
   return (
     <div>
-      <Navbar />
       <div className="flex flex-col items-center justify-center h-100">
-        {isPending ? null : session?.user?.name ? (
-          <h1 className="text-4xl text-black font-bold">Welcome {session?.user?.name}</h1>
-        ) : (
-          <h1 className="text-4xl text-black font-bold">Welcome</h1>
-        )}
+        <h1 className="text-4xl text-black font-bold">
+          {session?.user?.name ? `Welcome ${session.user.name}` : "Welcome"}
+        </h1>
         <p className="text-gray-500 mt-4">This is the home page</p>
       </div>
     </div>
