@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 
+
 interface Users {
   id: number;
-  username: string;
+  name: string;
   email: string;
 }
 
@@ -45,7 +46,7 @@ const Users = () => {
               key={user.id}
               className="grid grid-cols-2 px-6 py-4 border-t border-slate-200 hover:bg-slate-50 transition-colors"
             >
-              <span className="text-slate-800">{user.username}</span>
+              <span className="text-slate-800">{user.name}</span>
               <span className="text-slate-500">{user.email}</span>
             </div>
           ))}

@@ -1,21 +1,13 @@
 'use client'
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
+import { useSession } from "@/lib/auth-client";
 
 const Profile = () => {
 
-  const [username, setUsername] = useState<string | null>(null)
-  const [email, setEmail] = useState<null | string>(null)
 
-  useEffect(() => {
-    const fetchUsr = async () => {
-      const res = await fetch('/api/me')
-      const data = await res.json()
-      setUsername(data.user.username)
-      setEmail(data.user.email)
-    }
-    fetchUsr()
-   }, [])
+  const { data: session } = useSession();
+
 
 
   return (
@@ -27,11 +19,11 @@ const Profile = () => {
           <div className="flex flex-col gap-4">
             <div>
               <span className="text-sm text-slate-500">Username</span>
-              <p className="text-slate-900 font-medium">{username}</p>
+              <p className="text-slate-900 font-medium">{session?.user?.name || "User"}</p>
             </div>
             <div>
               <span className="text-sm text-slate-500">Email</span>
-              <p className="text-slate-900 font-medium">{email}</p>
+              <p className="text-slate-900 font-medium">{session?.user?.email || "User"}</p>
             </div>
           </div>
         </div>
