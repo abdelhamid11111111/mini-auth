@@ -8,11 +8,12 @@ type Props = {
 };
 
 const Navbar = ({ initialSession }: Props) => {
-  const { data: session } = useSession();
+  
+  const { data: session, isPending } = useSession();
   const router = useRouter();
 
-  // Use server-fetched session first, fall back to client session after hydration
-  const user = session?.user ?? initialSession?.user ?? null;
+  // Once useSession finishes loading, trust it completely over initialSession
+  const user = isPending ? initialSession?.user ?? null : session?.user ?? null;
 
   return (
     <nav className="flex items-center px-8 py-4 bg-white shadow sticky top-0 z-50">

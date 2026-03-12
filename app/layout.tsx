@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
+
+  // read session cookie from request headers → query DB → return session or null, using server functions of auth.api
   const session = await auth.api.getSession({ headers: await headers() });
 
   return (
