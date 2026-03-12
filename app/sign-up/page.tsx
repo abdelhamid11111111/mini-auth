@@ -30,7 +30,7 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen dark:bg-slate-900 dark:text-white bg-slate-50">
       {/* <Navbar /> */}
 
       <main className="flex items-center justify-center px-4 py-20">
